@@ -1,28 +1,51 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Moneder {
     //Atributs
-    ArrayList<Monedes> moneder;
-    float monaderActual;
+    private final int numCaixes = 4;
+    private ArrayList<Monedes> cM1E;
+    private ArrayList<Monedes> cM2E;
+    private ArrayList<Monedes> cM50C;
+    private ArrayList<Monedes> cM20C;
 
     //Constructor
-    public Moneder(ArrayList<Monedes> moneder, float monaderActual){
-        this.moneder = moneder;
-        this.monaderActual = monaderActual;
+    public Moneder(ArrayList<Monedes> caixaM1E, ArrayList<Monedes> caixaM2E, ArrayList<Monedes> caixaM50C, ArrayList<Monedes> caixaM20C){
+        this.cM1E = caixaM1E;
+        this.cM2E = caixaM2E;
+        this.cM20C = caixaM20C;
+        this.cM50C = caixaM50C;
     }
 
     //Metodes
-    public void afegirMonedes(Monedes monedes){
-        moneder.add(monedes);
-    }
 
-    public void afegirQuantitatMonedes(String tipus, int quantiat){
-        for (Monedes a : moneder){
-            if (a.getTipus().equals(tipus)){
-                a.afegirMonedes(quantiat);
-                break;
+        //Afegir monedes
+        public void afegirMonedesCaixa(int quantitat, String nomCaixa){
+            for (int i =0; i < numCaixes; i++){
+                switch (nomCaixa) {
+                    case "cM1E":
+                        for (int j = 0; j < quantitat; j++) {
+                            cM1E.add(Monedes.E1);
+                        }
+                        break;
+                    case "cM2E":
+                        for (int j = 0; j < quantitat; j++) {
+                            cM1E.add(Monedes.E2);
+                        }
+                        break;
+                    case "cM50C":
+                        for (int j = 0; j < quantitat; j++) {
+                            cM1E.add(Monedes.C50);
+                        }
+                        break;
+                    default:
+                        for (int j = 0; j < quantitat; j++) {
+                            cM1E.add(Monedes.C20);
+                        }
+                        break;
+                }
             }
         }
-    }
+
 
 }
