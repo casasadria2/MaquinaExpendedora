@@ -19,7 +19,9 @@ public class Moneder {
 
     //Metodes
 
-        //Afegir monedes
+        /*
+        Aquest metode et permet afegir la quantitat que vulguis a la caixa que vulguis.
+         */
         public void afegirMonedesCaixa(int quantitat, String nomCaixa){
             for (int i =0; i < numCaixes; i++){
                 switch (nomCaixa) {
@@ -38,7 +40,7 @@ public class Moneder {
                             cM1E.add(Monedes.C50);
                         }
                         break;
-                    default:
+                    case "cM20C":
                         for (int j = 0; j < quantitat; j++) {
                             cM1E.add(Monedes.C20);
                         }
