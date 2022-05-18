@@ -58,7 +58,7 @@ public class Moneder {
         }
 
         public HashMap<String, Integer> canviARetorna(double canviARetorna){
-           HashMap<Moneda, Integer> llistaMonedes = new HashMap<>();
+           HashMap<String, Integer> llistaMonedes = new HashMap<>();
            boolean canviDonat = false;
            boolean potTornarCanvi = true;
            Integer quantiat = 0;
@@ -73,6 +73,7 @@ public class Moneder {
 
                }
            }
+           return llistaMonedes;
         }
 
     /**
