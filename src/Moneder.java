@@ -57,12 +57,13 @@ public class Moneder {
             };
         }
 
-        public HashMap<String, Integer> canviARetorna(double canviARetorna){
-           HashMap<String, Integer> llistaMonedes = new HashMap<>();
+        public HashMap<Moneda, Integer> canviARetorna(double canviARetorna){
+           HashMap<Moneda, Integer> llistaMonedes = new HashMap<>();
            boolean canviDonat = false;
            boolean potTornarCanvi = true;
            Integer quantiat = 0;
            double canviRetornat = 0;
+
 
            while (potTornarCanvi){
                canviRetornat = canviRetornat + Moneda.E2.getValor();
@@ -70,27 +71,71 @@ public class Moneder {
                    canviRetornat = canviRetornat - Moneda.E2.getValor();
                    potTornarCanvi = false;
                }else if (canviRetornat == canviARetorna){
-
+                   canviDonat = true;
+               }else {
+                   quantiat++;
                }
            }
+           llistaMonedes.put(Moneda.E2, quantiat);
+
+           if (!canviDonat){
+               potTornarCanvi = true;
+               quantiat = 0;
+               while (potTornarCanvi){
+                   canviRetornat = canviRetornat + Moneda.E1.getValor();
+                   if (canviRetornat > canviARetorna){
+                       canviRetornat = canviARetorna - Moneda.E1.getValor();
+                       potTornarCanvi = false;
+                   }else if (canviRetornat == canviARetorna){
+                       canviDonat = true;
+                   }else {
+                       quantiat++;
+                   }
+               }
+               llistaMonedes.put(Moneda.E1, quantiat);
+           }
+
+            if (!canviDonat){
+                potTornarCanvi = true;
+                quantiat = 0;
+                while (potTornarCanvi){
+                    canviRetornat = canviRetornat + Moneda.C50.getValor();
+                    if (canviRetornat > canviARetorna){
+                        canviRetornat = canviARetorna - Moneda.C50.getValor();
+                        potTornarCanvi = false;
+                    }else if (canviRetornat == canviARetorna){
+                        canviDonat = true;
+                    }else {
+                        quantiat++;
+                    }
+                }
+                llistaMonedes.put(Moneda.C50, quantiat);
+            }
+
+            if (!canviDonat){
+                potTornarCanvi = true;
+                quantiat = 0;
+                while (potTornarCanvi){
+                    canviRetornat = canviRetornat + Moneda.C20.getValor();
+                    if (canviRetornat > canviARetorna){
+                        canviRetornat = canviARetorna - Moneda.C20.getValor();
+                        potTornarCanvi = false;
+                    }else if (canviRetornat == canviARetorna){
+                        canviDonat = true;
+                    }else {
+                        quantiat++;
+                    }
+                }
+                llistaMonedes.put(Moneda.C20, quantiat);
+            }
+
+            if (!canviDonat){
+                System.out.println("Error al tornar el canvi!!");
+            }
+
            return llistaMonedes;
         }
 
-    /**
-     * System.out.println("Canvi a retornar: " + canviAretorna);
-     *         while (potTornarCanvi){
-     *             dinersRetornats = dinersRetornats + moneda2e;
-     *             contadors2Euros++;
-     *             if (dinersRetornats > canviAretorna){
-     *                 potTornarCanvi = false;
-     *                 dinersRetornats = dinersRetornats - moneda2e;
-     *                 contadors2Euros--;
-     *             }else if (dinersRetornats == canviAretorna){
-     *                 canviRetornat = true;
-     *                 System.out.println("Canvi retornat: ");
-     *             }
-     *         }
-     */
 
 
 }
