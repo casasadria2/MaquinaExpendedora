@@ -12,5 +12,20 @@ public class Producte {
         this.quantitat = quantitat;
         this.idProducte = idProducte;
     }
-    
+
+    public java.lang.String getNom() {
+        return nom;
+    }
+
+    public float getPreu() {
+        return preu;
+    }
+
+    public float getQuantitat() {
+        return quantitat;
+    }
+
+    public String getIdProducte() {
+        return idProducte;
+    }
 }
